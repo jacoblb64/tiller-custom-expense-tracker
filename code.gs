@@ -29,7 +29,7 @@ const B_NAME = "";
  * Build our Custom Expense Tracker
  * @param transactionSheet The entire transaction sheet, all rows and columns
  * @param categories Columns A-C of the categories sheet, all rows
- * @param {number} splitPercent The percentage of G's split, as a decimal
+ * @param {number} splitPercent The percentage of A's split, as a decimal
  * @return A set of rows and columns tracking our expenses, with months as rows and dimensions by column
  * 
  * @customfunction
@@ -70,7 +70,7 @@ function buildExpenseTracker(transactionSheet, categories, splitPercent, startYe
       split: 0,
       a_amount: 0,
       b_amount: 0,
-      aOwsB: 0, // positive is money G owns to J, negative is the opposite
+      aOwsB: 0, // positive is money A owns to B, negative is the opposite
       saved: 0,
     });
   }
@@ -128,7 +128,7 @@ function buildExpenseTracker(transactionSheet, categories, splitPercent, startYe
       }
       else if (person == B_NAME) {
         // if B paid for something for A, they owe the full amount
-        month.gOwsJ += amount;
+        month.aOwsB += amount;
       }
     }
     // When A pays for their own accounts, or B pays for their own accounts, ignore
